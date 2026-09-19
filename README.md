@@ -275,4 +275,4 @@ Reactなどのフロントエンド技術については、本リリース後に
 - 画面遷移図
 URL：https://www.figma.com/design/SqXdUN8CbzJYkJ3gFSbxsK/Figma-basics?node-id=4762-15&t=nFwxOGg8stC9RyJU-1
 - ER図
-URL：https://prnt.sc/VyyI1TkVxTvK
+URL：https://prnt.sc/pLxegGauvy6f
