@@ -4,17 +4,9 @@
   </div>
 
   <div class="top-header__actions">
-    <% if user_signed_in? %>
-      <span>ログイン中：<%= current_user.name %></span>
-      <%= button_to "ログアウト",
-                    destroy_user_session_path,
-                    method: :delete,
-                    class: "signup-button" %>
-    <% else %>
-      <%= link_to "新規登録",
-                  new_user_registration_path,
-                  class: "signup-button" %>
-    <% end %>
+    <%= link_to "新規登録",
+                new_user_registration_path,
+                class: "signup-button" %>
   </div>
 </header>
 
@@ -38,21 +30,26 @@
   <section class="signin-card">
     <h2>サインイン</h2>
 
-    <%= form_with scope: :user, url: user_session_path, class: "signin-form" do |f| %>
+    <%= form_for(resource,
+                 as: resource_name,
+                 url: session_path(resource_name),
+                 html: { class: "signin-form" }) do |f| %>
       <div class="form-group">
         <%= f.label :email, "Email" %>
         <%= f.email_field :email,
-                          placeholder: "example@email.com",
-                          autocomplete: "email" %>
+                          autofocus: true,
+                          autocomplete: "email",
+                          placeholder: "example@email.com" %>
       </div>
 
       <div class="form-group">
         <%= f.label :password, "Password" %>
         <%= f.password_field :password,
-                             placeholder: "パスワードを入力",
-                             autocomplete: "current-password" %>
+                             autocomplete: "current-password",
+                             placeholder: "パスワードを入力" %>
       </div>
 
       <%= f.submit "サインイン", class: "signin-button" %>
     <% end %>
   </section>
+</main>

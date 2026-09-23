@@ -1,0 +1,8 @@
+ja:
+  devise:
+    failure:
+      invalid: "メールアドレスまたはパスワードが無効です。"
+      unauthenticated: "ログインしてください。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
