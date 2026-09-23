@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  has_one_attached :image
+
   enum :emotion, {
     happy: 0,
     excited: 1,
