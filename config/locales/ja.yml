@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        category: "カテゴリー"
+
+  errors:
+    messages:
+      required: "を選択してください"
