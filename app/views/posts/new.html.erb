@@ -1,53 +1,77 @@
-<h1>新しい記録を追加</h1>
+<div class="post-form-page">
+  <div class="post-form-container">
+    <div class="post-form-header">
+      <p class="post-form-header__label">NEW MEMORY</p>
+      <h1 class="post-form-header__title">新しい記録を追加</h1>
+      <p class="post-form-header__description">
+        今日の「好き」や心が動いた瞬間を残そう
+      </p>
+    </div>
 
-<% if @post.errors.any? %>
-  <div>
-    <p>入力内容を確認してください</p>
+    <div class="post-form-card">
+      <% if @post.errors.any? %>
+        <div class="form-errors">
+          <p>入力内容を確認してください</p>
 
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
-  </div>
-<% end %>
 
-<%= form_with model: @post do |f| %>
-  <div>
-    <%= f.label :image, "写真" %>
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
+      <%= form_with model: @post do |f| %>
+        <div class="post-form-group">
+          <%= f.label :image, "写真" %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
 
-  <div>
-    <%= f.label :title, "タイトル" %>
-    <%= f.text_field :title %>
-  </div>
+        <div class="post-form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, placeholder: "思い出のタイトル" %>
+        </div>
 
-  <div>
-    <%= f.label :category_id, "カテゴリー" %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "カテゴリーを選択" %>
-  </div>
+        <div class="post-form-group">
+          <%= f.label :category_id, "カテゴリー" %>
+          <%= f.collection_select :category_id,
+                                  Category.all,
+                                  :id,
+                                  :name,
+                                  { prompt: "カテゴリーを選択" } %>
+        </div>
 
-  <div>
-    <%= f.label :body, "コメント（任意）" %>
-    <%= f.text_area :body %>
-  </div>
+        <div class="post-form-group">
+          <%= f.label :body, "コメント（任意）" %>
+          <%= f.text_area :body,
+                          placeholder: "そのときの気持ちや思い出を自由に残してみよう",
+                          rows: 5 %>
+        </div>
 
-  <div>
-    <%= f.label :favorite_rating, "お気に入り度（任意）" %>
-    <%= f.select :favorite_rating,
-                 (1..5).map { |number| ["★#{number}", number] },
-                 { include_blank: "選択しない" } %>
-  </div>
+        <div class="post-form-row">
+          <div class="post-form-group">
+            <%= f.label :favorite_rating, "お気に入り度（任意）" %>
+            <%= f.select :favorite_rating,
+                         (1..5).map { |number| ["★#{number}", number] },
+                         { include_blank: "選択しない" } %>
+          </div>
 
-  <div>
-    <%= f.label :emotion, "感情（任意）" %>
-    <%= f.select :emotion,
-                 Post.emotions.keys.map { |emotion| [emotion.humanize, emotion] },
-                 { include_blank: "選択しない" } %>
-  </div>
+          <div class="post-form-group">
+            <%= f.label :emotion, "感情（任意）" %>
+            <%= f.select :emotion,
+                         Post.emotions.keys.map { |emotion| [emotion.humanize, emotion] },
+                         { include_blank: "選択しない" } %>
+          </div>
+        </div>
 
-  <div>
-    <%= f.submit "記録する" %>
+        <div class="post-form-actions">
+          <%= f.submit "記録する", class: "primary-button post-form-submit" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="post-form-back">
+      <%= link_to "← 投稿一覧に戻る", posts_path %>
+    </div>
   </div>
-<% end %>
+</div>
