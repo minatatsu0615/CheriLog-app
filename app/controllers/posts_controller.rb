@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = current_user.posts.order(created_at: :desc)
+    @categories = Category.all
+
+    @posts = current_user.posts
+    @posts = @posts.where(category_id: params[:category_id]) if params[:category_id].present?
+    @posts = @posts.order(created_at: :desc)
   end
 
   def show
