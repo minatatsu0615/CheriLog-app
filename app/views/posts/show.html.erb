@@ -1,40 +1,85 @@
-<h1>投稿詳細</h1>
+<div class="post-page">
+  <div class="post-page__header">
+    <p class="post-page__eyebrow">MEMORY DETAIL</p>
 
-<% if @post.image.attached? %>
-  <%= image_tag @post.image, width: 500 %>
-<% end %>
+    <h1 class="post-page__title">記録の詳細</h1>
 
-<h2><%= @post.title %></h2>
+    <p class="post-page__description">
+      あの日の「好き」と気持ちを振り返ろう
+    </p>
+  </div>
 
-<p>
-  カテゴリー：
-  <%= @post.category.name %>
-</p>
+  <div class="post-detail-card">
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, class: "post-detail-card__image" %>
+    <% else %>
+      <div class="post-detail-card__no-image">
+        No Image
+      </div>
+    <% end %>
 
-<% if @post.body.present? %>
-  <p>
-    コメント：
-    <%= @post.body %>
-  </p>
-<% end %>
+    <div class="post-detail-card__content">
+      <span class="post-detail-card__category">
+        <%= @post.category.name %>
+      </span>
 
-<% if @post.favorite_rating.present? %>
-  <p>
-    お気に入り度：
-    <%= "★" * @post.favorite_rating %>
-  </p>
-<% end %>
+      <h2 class="post-detail-card__title">
+        <%= @post.title %>
+      </h2>
 
-<% if @post.emotion.present? %>
-  <p>
-    感情：
-    <%= @post.emotion.humanize %>
-  </p>
-<% end %>
+      <% if @post.body.present? %>
+        <div class="post-detail-card__section">
+          <p class="post-detail-card__label">コメント</p>
 
-<%= link_to "編集する", edit_post_path(@post) %>
+          <p class="post-detail-card__body">
+            <%= @post.body %>
+          </p>
+        </div>
+      <% end %>
 
-<%= button_to "削除する",
-              post_path(@post),
-              method: :delete,
-              data: { turbo_confirm: "本当に削除しますか？" } %>
+      <% if @post.favorite_rating.present? || @post.emotion.present? %>
+        <div class="post-detail-card__meta">
+          <% if @post.favorite_rating.present? %>
+            <div class="post-detail-card__meta-item">
+              <p class="post-detail-card__label">
+                お気に入り度
+              </p>
+
+              <div class="post-detail-card__stars">
+                <%= "★" * @post.favorite_rating %>
+              </div>
+            </div>
+          <% end %>
+
+          <% if @post.emotion.present? %>
+            <div class="post-detail-card__meta-item">
+              <p class="post-detail-card__label">
+                気持ち
+              </p>
+
+              <div class="post-detail-card__emotion">
+                <%= @post.emotion.humanize %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="post-detail-card__actions">
+        <%= link_to "編集する",
+                    edit_post_path(@post),
+                    class: "post-detail-card__edit" %>
+
+        <%= button_to "削除する",
+                      post_path(@post),
+                      method: :delete,
+                      class: "post-detail-card__delete",
+                      data: { turbo_confirm: "本当に削除しますか？" } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-page__back">
+    <%= link_to "← 投稿一覧に戻る", posts_path %>
+  </div>
+</div>
