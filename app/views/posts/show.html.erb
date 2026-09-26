@@ -1,0 +1,33 @@
+<h1>投稿詳細</h1>
+
+<% if @post.image.attached? %>
+  <%= image_tag @post.image, width: 500 %>
+<% end %>
+
+<h2><%= @post.title %></h2>
+
+<p>
+  カテゴリー：
+  <%= @post.category.name %>
+</p>
+
+<% if @post.body.present? %>
+  <p>
+    コメント：
+    <%= @post.body %>
+  </p>
+<% end %>
+
+<% if @post.favorite_rating.present? %>
+  <p>
+    お気に入り度：
+    <%= "★" * @post.favorite_rating %>
+  </p>
+<% end %>
+
+<% if @post.emotion.present? %>
+  <p>
+    感情：
+    <%= @post.emotion.humanize %>
+  </p>
+<% end %>
