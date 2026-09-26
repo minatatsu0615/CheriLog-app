@@ -1,0 +1,46 @@
+<h1>投稿編集</h1>
+
+<%= form_with model: @post do |form| %>
+  <div>
+    <%= form.label :image, "写真" %><br>
+
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, width: 300 %><br>
+    <% end %>
+
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :title, "タイトル" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, "カテゴリー" %><br>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :body, "コメント" %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.label :favorite_rating, "お気に入り度" %><br>
+    <%= form.select :favorite_rating,
+                    (1..5).map { |number| [number, number] },
+                    { include_blank: "選択しない" } %>
+  </div>
+
+  <div>
+    <%= form.label :emotion, "感情" %><br>
+    <%= form.select :emotion,
+                    Post.emotions.keys.map { |emotion| [emotion.humanize, emotion] },
+                    { include_blank: "選択しない" } %>
+  </div>
+
+  <div>
+    <%= form.submit "更新する" %>
+  </div>
+<% end %>
