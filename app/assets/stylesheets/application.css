@@ -206,7 +206,20 @@ body {
 .posts-page {
   min-height: calc(100vh - 88px);
   padding: 60px 6% 80px;
-  background: linear-gradient(135deg, #fffaf7, #fff6f3);
+  background:
+    radial-gradient(
+      circle at 5% 15%,
+      rgba(255, 202, 215, 0.55) 0,
+      rgba(255, 202, 215, 0.55) 130px,
+      transparent 131px
+    ),
+    radial-gradient(
+      circle at 95% 85%,
+      rgba(190, 235, 240, 0.55) 0,
+      rgba(190, 235, 240, 0.55) 170px,
+      transparent 171px
+    ),
+    linear-gradient(135deg, #fffaf7, #fff6f3);
 }
 
 .posts-container {
@@ -426,7 +439,20 @@ body {
 .post-form-page {
   min-height: calc(100vh - 88px);
   padding: 60px 6% 80px;
-  background: linear-gradient(135deg, #fffaf7, #fff6f3);
+  background:
+    radial-gradient(
+      circle at 5% 15%,
+      rgba(255, 202, 215, 0.55) 0,
+      rgba(255, 202, 215, 0.55) 130px,
+      transparent 131px
+    ),
+    radial-gradient(
+      circle at 95% 85%,
+      rgba(190, 235, 240, 0.55) 0,
+      rgba(190, 235, 240, 0.55) 170px,
+      transparent 171px
+    ),
+    linear-gradient(135deg, #fffaf7, #fff6f3);
 }
 
 .post-form-container {
@@ -644,7 +670,20 @@ body {
   width: 100%;
   min-height: calc(100vh - 88px);
   padding: 60px 6% 80px;
-  background: linear-gradient(135deg, #fffaf7, #fff6f3);
+  background:
+    radial-gradient(
+      circle at 5% 15%,
+      rgba(255, 202, 215, 0.55) 0,
+      rgba(255, 202, 215, 0.55) 130px,
+      transparent 131px
+    ),
+    radial-gradient(
+      circle at 95% 85%,
+      rgba(190, 235, 240, 0.55) 0,
+      rgba(190, 235, 240, 0.55) 170px,
+      transparent 171px
+    ),
+    linear-gradient(135deg, #fffaf7, #fff6f3);
 }
 
 /* 編集ページと同じ横幅に統一 */
@@ -949,4 +988,126 @@ body {
     padding: 8px 14px;
     font-size: 13px;
   }
+}
+
+/* =========================
+   POSTS HEADER ACTIONS
+========================= */
+
+.posts-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.posts-header__actions form {
+  margin: 0;
+}
+
+.logout-button {
+  padding: 12px 24px;
+  color: #ff7189;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ffb3bf;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(80, 70, 70, 0.06);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  background-color: #fff0f3;
+  box-shadow: 0 7px 18px rgba(255, 113, 137, 0.15);
+}
+
+@media (max-width: 600px) {
+  .posts-header__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .posts-header__actions .primary-button,
+  .logout-button {
+    text-align: center;
+  }
+}
+
+/* =========================
+   EMOTION BADGES
+========================= */
+
+.emotion-badge {
+  display: inline-block;
+  padding: 5px 11px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 20px;
+}
+
+/* Happy - Pink */
+.emotion-badge--happy {
+  color: #e85f7a;
+  background-color: #ffe8ee;
+}
+
+/* Excited - Orange */
+.emotion-badge--excited {
+  color: #e98552;
+  background-color: #fff0e5;
+}
+
+/* Cozy - Beige */
+.emotion-badge--cozy {
+  color: #a67c52;
+  background-color: #f7eee3;
+}
+
+/* Calm - Light Blue */
+.emotion-badge--calm {
+  color: #5796a5;
+  background-color: #e5f4f6;
+}
+
+/* Love - Rose */
+.emotion-badge--love {
+  color: #d95d75;
+  background-color: #ffe2e8;
+}
+
+/* Wow - Yellow */
+.emotion-badge--wow {
+  color: #b88a32;
+  background-color: #fff5cf;
+}
+
+/* Inspired - Purple */
+.emotion-badge--inspired {
+  color: #8a6bb8;
+  background-color: #f0e9fa;
+}
+
+/* Touched - Lavender */
+.emotion-badge--touched {
+  color: #8b78aa;
+  background-color: #eee9f5;
+}
+
+/* Grateful - Green */
+.emotion-badge--grateful {
+  color: #67936f;
+  background-color: #e8f4e9;
+}
+
+/* Curious - Blue */
+.emotion-badge--curious {
+  color: #5d82b3;
+  background-color: #e8f0fa;
 }

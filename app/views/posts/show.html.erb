@@ -58,7 +58,9 @@
               </p>
 
               <div class="post-detail-card__emotion">
-                <%= @post.emotion.humanize %>
+                <span class="emotion-badge emotion-badge--<%= @post.emotion %>">
+                  <%= @post.emotion.humanize %>
+                </span>
               </div>
             </div>
           <% end %>
