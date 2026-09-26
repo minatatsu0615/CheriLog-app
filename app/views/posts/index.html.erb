@@ -12,6 +12,18 @@
       <%= link_to "＋ 新規投稿", new_post_path, class: "primary-button" %>
     </div>
 
+    <div class="category-filter">
+      <%= link_to "すべて",
+                  posts_path,
+                  class: "category-filter__button #{'is-active' if params[:category_id].blank?}" %>
+
+      <% @categories.each do |category| %>
+        <%= link_to category.name,
+                    posts_path(category_id: category.id),
+                    class: "category-filter__button #{'is-active' if params[:category_id].to_s == category.id.to_s}" %>
+      <% end %>
+    </div>
+
     <% if @posts.any? %>
       <div class="posts-grid">
         <% @posts.each do |post| %>
