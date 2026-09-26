@@ -9,7 +9,16 @@
         </p>
       </div>
 
-      <%= link_to "＋ 新規投稿", new_post_path, class: "primary-button" %>
+      <div class="posts-header__actions">
+      <%= link_to "＋ 新規投稿",
+                  new_post_path,
+                  class: "primary-button" %>
+
+      <%= button_to "ログアウト",
+                    destroy_user_session_path,
+                    method: :delete,
+                    class: "logout-button" %>
+    </div>
     </div>
 
     <div class="category-filter">
@@ -60,10 +69,12 @@
                 <% if post.emotion.present? %>
                   <p class="post-card__emotion">
                     <span>気持ち</span>
-                    <span><%= post.emotion.humanize %></span>
+
+                    <span class="emotion-badge emotion-badge--<%= post.emotion %>">
+                      <%= post.emotion.humanize %>
+                    </span>
                   </p>
                 <% end %>
-              </div>
 
               <%= link_to "詳細を見る →",
                           post_path(post),
