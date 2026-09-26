@@ -33,3 +33,8 @@
 <% end %>
 
 <%= link_to "編集する", edit_post_path(@post) %>
+
+<%= button_to "削除する",
+              post_path(@post),
+              method: :delete,
+              data: { turbo_confirm: "本当に削除しますか？" } %>
