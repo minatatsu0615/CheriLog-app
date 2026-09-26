@@ -5,6 +5,10 @@ class PostsController < ApplicationController
     @posts = current_user.posts.order(created_at: :desc)
   end
 
+  def show
+    @post = current_user.posts.find(params[:id])
+  end
+
   def new
     @post = Post.new
   end
