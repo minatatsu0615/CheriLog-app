@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to root_path, notice: "記録を保存しました"
+      redirect_to posts_path, notice: "記録を保存しました"
     else
       render :new, status: :unprocessable_entity
     end

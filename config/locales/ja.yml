@@ -3,7 +3,9 @@ ja:
     attributes:
       post:
         category: "カテゴリー"
+        image: "写真"
 
   errors:
     messages:
       required: "を選択してください"
+      blank: "を選択してください"

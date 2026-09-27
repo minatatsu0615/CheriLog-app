@@ -17,6 +17,8 @@ class Post < ApplicationRecord
     curious: 9
   }
 
+  validates :image, presence: true
+
   validates :favorite_rating,
             inclusion: { in: 1..5 },
             allow_nil: true
