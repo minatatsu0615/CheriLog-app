@@ -42,6 +42,9 @@ RSpec.configure do |config|
   # FactoryBotのメソッドをRSpec内で直接使えるようにする
   config.include FactoryBot::Syntax::Methods
 
+  # Request SpecでDeviseのsign_in / sign_outを使えるようにする
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
