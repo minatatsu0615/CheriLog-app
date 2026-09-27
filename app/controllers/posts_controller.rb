@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @categories = Category.all
 
-    @posts = current_user.posts
+    @posts = current_user.posts.includes(:category, :image_attachment)
     @posts = @posts.where(category_id: params[:category_id]) if params[:category_id].present?
     @posts = @posts.order(created_at: :desc)
   end

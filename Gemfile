@@ -59,6 +59,9 @@ end
 group :development do
   # Use console on exceptions pages [https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem]
   gem "web-console"
+
+  # Detect N+1 queries
+  gem "bullet"
 end
 
 group :test do
