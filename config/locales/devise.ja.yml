@@ -2,6 +2,7 @@ ja:
   devise:
     failure:
       invalid: "メールアドレスまたはパスワードが無効です。"
+      not_found_in_database: "メールアドレスまたはパスワードが無効です。"
       unauthenticated: "ログインしてください。"
     sessions:
       signed_in: "ログインしました。"
