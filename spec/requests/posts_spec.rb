@@ -8,13 +8,19 @@ RSpec.describe "Posts", type: :request do
         category = create(:category)
         sign_in user
 
+        image = fixture_file_upload(
+          Rails.root.join("spec/fixtures/files/test_image.png"),
+          "image/png"
+        )
+
         post_params = {
           post: {
             title: "テスト投稿",
             category_id: category.id,
             body: "テスト投稿の本文です。",
             favorite_rating: 5,
-            emotion: "happy"
+            emotion: "happy",
+            image: image
           }
         }
 
@@ -22,7 +28,7 @@ RSpec.describe "Posts", type: :request do
           post posts_path, params: post_params
         end.to change(Post, :count).by(1)
 
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(posts_path)
       end
     end
   end
@@ -134,6 +140,11 @@ RSpec.describe "Posts", type: :request do
       category = create(:category, name: "カフェ")
       sign_in user
 
+      image = fixture_file_upload(
+        Rails.root.join("spec/fixtures/files/test_image.png"),
+        "image/png"
+      )
+
       # 投稿を作成する
       expect do
         post posts_path, params: {
@@ -142,7 +153,8 @@ RSpec.describe "Posts", type: :request do
             category_id: category.id,
             body: "お気に入りのカフェに行きました。",
             favorite_rating: 5,
-            emotion: "happy"
+            emotion: "happy",
+            image: image
           }
         }
       end.to change(Post, :count).by(1)

@@ -10,6 +10,15 @@ RSpec.describe Post, type: :model do
       end
     end
 
+    context "写真が未添付の場合" do
+      it "投稿が無効であること" do
+        post = build(:post)
+        post.image.detach
+
+        expect(post).not_to be_valid
+      end
+    end
+
     context "favorite_ratingが0の場合" do
       it "投稿が無効であること" do
         post = build(:post, favorite_rating: 0)
