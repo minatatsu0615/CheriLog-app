@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @categories = Category.all
@@ -10,16 +11,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.posts.find(params[:id])
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-
     if @post.update(post_params)
       redirect_to @post, notice: "記録を更新しました"
     else
@@ -28,7 +25,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
     @post.destroy!
 
     redirect_to posts_path, notice: "投稿を削除しました"
@@ -49,6 +45,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(
